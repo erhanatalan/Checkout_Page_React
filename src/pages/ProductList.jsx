@@ -8,6 +8,7 @@ import axios from "axios";
 const ProductList = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [errorState, setErrorState] = useState(false)
   const url = process.env.REACT_APP_API_URL; //env dosyasi ana dizinde olacak
   // console.log("url",url);
 
@@ -18,6 +19,8 @@ const ProductList = () => {
       setLoading(false)
     }catch(error){
       console.log(error);
+      setLoading(false)
+      setErrorState(true)
     }
   }
   console.log(products);
@@ -39,8 +42,11 @@ const ProductList = () => {
             <CardTotal />
           </article>
         </>
-        :
-        <p className="text-center text-danger w-100">No products data...</p>}
+        : 
+        ( !errorState && <p className="text-center text-danger w-100">No data...</p>)}
+
+
+        {errorState && (<p className="text-center text-danger w-100">No products data...</p>)}
       </div>
     </div>
   );
