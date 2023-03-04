@@ -1,11 +1,30 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import CardTotal from "../components/CardTotal";
-
+import axios from "axios";
 
 
 const ProductList = () => {
+  const [products, setProducts] = useState([])
+
+  const url = process.env.REACT_APP_API_URL;
+  console.log(url);
+
+  const getProducts = async ()=>{
+    try{
+      const {data} = await axios("")
+      setProducts(data)
+    }catch(error){
+      console.log(error);
+    }
+  }
+  
+  useEffect(() => {
+    getProducts()
+  }, [])
+  
+
   return (
     <div className="container mt-3">
       <div className={"bg-light d-sm-block d-md-flex"}>

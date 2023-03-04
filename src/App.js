@@ -9,7 +9,7 @@ import UpdateProduct from "./pages/UpdateProduct";
 
 function App() {
 
-  // https://63fa3d35897af748dccbb376.mockapi.io/example1
+
 
   return (
     <div className="bg-light app">
