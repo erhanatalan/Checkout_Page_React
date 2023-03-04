@@ -17,6 +17,7 @@ const ProductList = () => {
       const {data} = await axios(url)
       setProducts(data)
       setLoading(false)
+      setErrorState(false)
     }catch(error){
       console.log(error);
       setLoading(false)
@@ -36,7 +37,11 @@ const ProductList = () => {
         : products.length>0 ? 
         <>
           <article id="product-panel" className="col-md-5">
-            <ProductCard />
+            {products.map((item)=>{
+              return(
+                <ProductCard item={item} key={item.id}/>
+              )
+            }) }
           </article>
           <article className="col-md-5 m-3">
             <CardTotal />
