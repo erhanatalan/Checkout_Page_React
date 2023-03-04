@@ -4,17 +4,30 @@ import React from "react";
 const ProductCard = ({item,url,getProducts}) => {
   const {name, image, price, dampingRate, amount, id}= item; 
 
-  const handleMinus= ()=>{
-
+  const handleMinus= async()=>{
+    if(amount - 1){
+      try{
+        await axios.put(`${url}/${id}`,{...item, amount: amount - 1,})
+      }catch(error){
+        console.log(error);
+      }
+      getProducts()
+    }else{
+      handleRemove()
+    }
   }
 
-  const handlePlus=()=>{
-
+  const handlePlus=async()=>{
+    try{
+      await axios.put(`${url}/${id}`,{...item, amount: amount + 1,})
+    }catch(error){
+      console.log(error);
+    }
+    getProducts()
   }
-  const handleRemove=async(id)=>{
+  const handleRemove=async()=>{
     try{
       await axios.delete(`${url}/${id}`)
-
     }catch(error){
       console.log(error);
     }
