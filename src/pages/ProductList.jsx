@@ -8,12 +8,12 @@ import axios from "axios";
 const ProductList = () => {
   const [products, setProducts] = useState([])
 
-  const url = process.env.REACT_APP_API_URL;
-  console.log(url);
+  const url = process.env.REACT_APP_API_URL; //env dosyasi ana dizinde olacak
+  console.log("url",url);
 
   const getProducts = async ()=>{
     try{
-      const {data} = await axios("")
+      const {data} = await axios(url)
       setProducts(data)
     }catch(error){
       console.log(error);
