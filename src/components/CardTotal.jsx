@@ -6,7 +6,7 @@ const shipping = 25;
 const CardTotal = ({products}) => {
   
   const subTotal = products.reduce((acc,product)=> product.price * product.amount * product.dampingRate + acc, 0)
-  console.log(subTotal);
+  // console.log(subTotal);
   return (
     <table className="table w-100">
       <tbody>
@@ -23,7 +23,7 @@ const CardTotal = ({products}) => {
           </td>
         </tr>
         <tr className="text-end">
-          <th className="text-start">Shipping</th>
+          <th className="text-start">Shipping (Above $300 Free)</th>
           <td>
             $<span className="shipping">
               {subTotal>300 ? 0 : shipping}

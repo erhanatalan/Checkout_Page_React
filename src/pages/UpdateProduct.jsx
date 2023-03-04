@@ -18,7 +18,7 @@ const UpdateProduct = () => {
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try{
-      await axios.post(`${url}/${item.id}`, formData)
+      await axios.put(`${url}/${item.id}`, formData)
       navigate(-1)
     }catch(error){
       console.log(error);
