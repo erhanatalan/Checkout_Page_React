@@ -24,7 +24,7 @@ const ProductList = () => {
       setErrorState(true)
     }
   }
-  console.log(products);
+  // console.log(products);
   useEffect(() => {
     getProducts()
   }, [])
@@ -39,7 +39,7 @@ const ProductList = () => {
           <article id="product-panel" className="col-md-5">
             {products.map((item)=>{
               return(
-                <ProductCard item={item} key={item.id}/>
+                <ProductCard item={item} key={item.id} url={url} getProducts={getProducts}/>
               )
             }) }
           </article>

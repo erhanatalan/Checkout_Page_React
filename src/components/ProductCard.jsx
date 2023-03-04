@@ -1,7 +1,26 @@
+import axios from "axios";
 import React from "react";
 
-const ProductCard = ({item}) => {
+const ProductCard = ({item,url,getProducts}) => {
   const {name, image, price, dampingRate, amount, id}= item; 
+
+  const handleMinus= ()=>{
+
+  }
+
+  const handlePlus=()=>{
+
+  }
+  const handleRemove=async(id)=>{
+    try{
+      await axios.delete(`${url}/${id}`)
+
+    }catch(error){
+      console.log(error);
+    }
+    getProducts()
+  }
+
   return (
     <div className="card shadow-lg mb-3">
       <div className="row g-0">
@@ -29,19 +48,19 @@ const ProductCard = ({item}) => {
             <div className="border border-1 border-dark shadow-lg d-flex justify-content-center p-2">
               <div className="quantity-controller">
                 <button className="btn btn-secondary btn-sm">
-                  <i className="fas fa-minus"></i>
+                  <i className="fas fa-minus" onClick={handleMinus}></i>
                 </button>
                 <p className="d-inline mx-4" id="product-quantity">
                   {amount}
                 </p>
                 <button className="btn btn-secondary btn-sm">
-                  <i className="fas fa-plus"></i>
+                  <i className="fas fa-plus" onClick={handlePlus}></i>
                 </button>
               </div>
             </div>
             <div className="product-removal mt-4">
               <button className="btn btn-danger btn-sm w-100 remove-product">
-                <i className="fa-solid fa-trash-can me-2"></i>Remove
+                <i className="fa-solid fa-trash-can me-2" onClick={handleRemove}></i>Remove
               </button>
             </div>
             <div className="mt-2">
